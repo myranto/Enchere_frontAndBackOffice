@@ -1,0 +1,21 @@
+html,
+body {
+	height: 100%;
+}
+
+
+
+
+
+
+td {
+	padding: 15px;
+	background-color: rgba(32, 89, 133, 0.2);
+	color: #3d5fb2;
+}
+
+th {
+	text-align: left;
+  color: #130d12;
+}
+
