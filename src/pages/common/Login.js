@@ -1,8 +1,7 @@
 import {useState} from "react";
 import {BaseUrl} from "../../BaseUrl";
-import '../../css/util.css'
-import  '../../css/main.css';
 import {useNavigate} from "react-router-dom";
+import '../../css/style_k.css';
 
 function Login(props) {
     const isClient = (props) =>{
@@ -16,7 +15,7 @@ function Login(props) {
             navigate('/ListeEnchere');
             // window.location.href = "/indexCli";
         }else{
-            navigate('/indexAdmin');
+            navigate('/ListeCategorie');
             // window.location.href = "/indexAdmin";
         }
     }
@@ -65,42 +64,38 @@ function Login(props) {
     }
     return (
         <>
-            <div className="limiter">
-                <div className="container-login100">
-                    <div className="wrap-login100 ">
-                        <form className="login100-form validate-form" onSubmit={handleSubmit}>
-					<span className="login100-form-title p-b-26">
-						Welcome {user}
-					</span>
-                            <span className="login100-form-title p-b-48">
-						<i className="zmdi zmdi-font"></i>
-					</span>
-                            <div className="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                                <input className="form-control" type="email" name="email" value={email}
-                                       onChange={(event) => setEmail(event.target.value)}/>
-                                <span className="focus-input100" data-placeholder=""></span>
-                            </div>
+            <div className={"parent clearfix"}>
+                <div className="bg-illustration">
+                    {/*<img src={process.env.PUBLIC_URL + '/images/auction.jpg'} alt="logo" />*/}
 
-                            <div className="form-group" data-validate="Enter password">
-                                <input className="form-control" type="password" name="pwd" value={mdp}
+                        <div className="burger-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                </div>
+                <div className="login">
+                    <div className="container">
+                        <h1>Login  {user}</h1>
+
+                        <div className="login-form">
+                            <form  onSubmit={handleSubmit}>
+                                <input className="form-control" type="email" placeholder="E-mail Address" name="email" value={email}
+                                       onChange={(event) => setEmail(event.target.value)}/>
+                                <input className="form-control" placeholder="Password" type="password" name="pwd" value={mdp}
                                        onChange={(event) => setMdp(event.target.value)}/>
-                                <span className="focus-input100" data-placeholder=""></span>
-                            </div>
-                            <h3 style={style}>{response}</h3>
-                                <div className="">
-                                    <button className="form-control btn btn-success" type="submit">
-                                        Login
-                                    </button>
-                                </div>
-                            <div className='form-group'>
-                                <p>
-                                <a   href="/Login">retour</a>
-                                </p>
-                                <a  href="/Inscription">s'inscrire en tant que client</a>
-                            </div>
-                        </form>
+                                        <div className="forget-pass">
+                                            <a  href="/Inscription">s'inscrire en tant que client</a>
+                                        </div>
+                                        <button type="submit">LOG-IN</button>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </>
             );

@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import {BaseUrl} from "../../BaseUrl";
+import HomeAdmin from "./Home";
+import ListCatego from "../../component/catego/list";
+import {Footer} from "../../component/MenuCli/Footer";
 
 export default function FormDuration() {
     const [last,setLast] = useState("");
@@ -46,39 +49,32 @@ export default function FormDuration() {
     }
     return (
         <>
-            <div className="main-block">
-                <div className="left-part">
-                    <i className="fas fa-envelope"></i>
-                    <i className="fas fa-at"></i>
-                    <i className="fas fa-mail-bulk"></i>
-                </div>
-                <div className="container">
-                    <div className="row col-md-12">
-                        <form onSubmit={handleSubmit}>
-                            <h1>ajouter une nouvelle duree par defaut des encheres</h1>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <p>la valeur par defaut est {last?.value} heures</p>
+            <HomeAdmin />
+            <div className="fashion_section">
+                <div id="electronic_main_slider" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className={"container"}>
+                            <form className={"form-control"} onSubmit={handleSubmit}>
+                                <h1>ajouter une nouvelle duree par defaut des encheres</h1>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>la valeur par defaut est {last?.value} heures</p>
 
-                                    <div className="form-group">
-                                        <label htmlFor="cat">udpdate it</label>
-                                        <input type="number" min={0} name="tough"/> h
+                                        <div className="form-group">
+                                            <label htmlFor="cat">update it</label>
+                                            <input className={"form-control input-group-text"} type="number" min={0} name="tough"/> heures
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br/>
+                                <br/>
 
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="form-group">
-                                        <button type="submit" className="btn btn-primary">Valider</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                                            <button type="submit" className="btn btn-primary">Valider</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

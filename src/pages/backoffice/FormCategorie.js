@@ -1,5 +1,4 @@
 import {BaseUrl} from "../../BaseUrl";
-import '../../css/new.css';
 function FormCategorie() {
     const handleSubmit=(e)=>{
         e.preventDefault();

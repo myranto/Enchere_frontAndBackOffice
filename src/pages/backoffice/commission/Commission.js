@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import {BaseUrl} from "../../../BaseUrl";
+import HomeAdmin from "../Home";
+import {Footer} from "../../../component/MenuCli/Footer";
 
 export default function Commission() {
     const [last,setLast] = useState("");
@@ -46,38 +48,31 @@ export default function Commission() {
     }
     return (
         <>
-            <div className="main-block">
-                <div className="left-part">
-                    <i className="fas fa-envelope"></i>
-                    <i className="fas fa-at"></i>
-                    <i className="fas fa-mail-bulk"></i>
-                </div>
-                <div className="container">
-                    <div className="row col-md-12">
-                        <form onSubmit={handleSubmit}>
-                            <h1>modifier commission</h1>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <p>last commission : {last?.taux} %</p>
-                                    <div className="form-group">
-                                        <label htmlFor="cat">default tough auction</label>
-                                        <input type="number" min={0} name="taux"/> %
+            <HomeAdmin />
+            <div className="fashion_section">
+                <div id="electronic_main_slider" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className={"container"}>
+                            <form onSubmit={handleSubmit}>
+                                <h1>modifier commission</h1>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>last commission : {last?.taux} %</p>
+                                        <div className="form-group">
+                                            <label htmlFor="cat">default tough auction</label>
+                                            <input type="number" className={"form-control input-group-text"} min={0} name="taux"/> %
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br/>
+                                <br/>
 
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="form-group">
-                                        <button type="submit" className="btn btn-primary">Valider</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                                            <button type="submit" className="btn btn-primary">Valider</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

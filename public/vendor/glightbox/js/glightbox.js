@@ -1122,7 +1122,7 @@
           isInlined = currentSlide.querySelector('.gslide-inline');
           mediaImage = null;
 
-          if (hasClass(media, 'gslide-image')) {
+          if (hasClass(media, 'gslide-images')) {
             mediaImage = media.querySelector('img');
           }
 
@@ -3365,7 +3365,7 @@
         var winSize = windowSize();
 
         var video = slide.querySelector('.gvideo-wrapper');
-        var image = slide.querySelector('.gslide-image');
+        var image = slide.querySelector('.gslide-images');
         var description = this.slideDescription;
         var winWidth = winSize.width;
         var winHeight = winSize.height;

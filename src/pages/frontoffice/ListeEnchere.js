@@ -1,8 +1,9 @@
 import {  Link } from "react-router-dom";
 import {useEffect, useState} from "react";
 import {BaseUrl} from "../../BaseUrl";
-import HomeCli from "./HomeCli";
-import '../../css/style2.css';
+import HomeCli, {styles} from "./HomeCli";
+import Comp_List from "../../component/account_reload";
+import {Footer} from "../../component/MenuCli/Footer";
 
 function ListeEnchere() {
     const [list,setList] = useState(null);
@@ -21,31 +22,41 @@ function ListeEnchere() {
     const none = "pas d'enchere en cours";
     return (
         <>
-           <div>
             <HomeCli />
-           </div>
-            <main id="main" className="main-content position-sticky max-height-vh-100 h-100 border-radius-lg ">
-
-            <div className="container">
-                <h1>Liste des encheres </h1>
-                <table className="table-hover tab-content table-responsive">
-                    <thead>
-                    <tr>
-                        <td>Date Encheres</td>
-                        <td>idEnchere</td>
-                        <td>Categorie</td>
-                        <td>Duree</td>
-                        <td>Prix de vente </td>
-                        <td>Prix mise en Encheres</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <center><p>{list?.length===0 && none}</p></center>
-                    {list?.map((e)=>Value(e.enchere))}
-                    </tbody>
-                </table>
+            <div className="fashion_section">
+                <div id="electronic_main_slider" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="container">
+                            <h1>Liste des encheres </h1>
+                                <center><h1 style={styles}>{list?.length===0 && none}</h1></center>
+                            <table className="table-hover tab-content table-responsive">
+                                <thead>
+                                <tr>
+                                    <td>Date Encheres</td>
+                                    <td>idEnchere</td>
+                                    <td>Categorie</td>
+                                    <td>Duree</td>
+                                    <td>Prix de vente </td>
+                                    <td>Prix mise en Encheres</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {list?.map((e)=>Value(e.enchere))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#electronic_main_slider" role="button" data-slide="prev">
+                        <i className="fa fa-angle-left"></i>
+                    </a>
+                    <a className="carousel-control-next" href="#electronic_main_slider" role="button" data-slide="next">
+                        <i className="fa fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
-            </main>
+
+            <Footer />
+
         </>
     );
 }

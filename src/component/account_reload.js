@@ -1,9 +1,10 @@
+import {BaseUrl} from "../BaseUrl";
 
 export default  function Comp_List(props){
     const validate = (idclient) =>{
         if (window.confirm("validate this request ? ")===true){
             fetch(
-                "http://localhost:8000/enchere/admin/account/"+idclient,
+                BaseUrl+"enchere/admin/account/"+idclient,
                 {
                     method: "GET",
                     headers: {
@@ -15,8 +16,8 @@ export default  function Comp_List(props){
                 .then((res) => {
                     alert(res.data)
                     // nav("/ValidationCompte");
-                    window.location.reload();
-                    // window.location.href = "/ValidationCompte";
+                    // window.location.reload();
+                    window.location.href = "/indexAdmin";
                 })
                 .catch((error) => {
                     console.error(error);
@@ -29,7 +30,7 @@ export default  function Comp_List(props){
             <td>{props.idclient.nom}</td>
             <td>{props.idclient.email}</td>
             <td>{props.montant} Ar</td>
-            <th><button type="submit" onClick={()=>validate(props.idclient.id)}>valider</button></th>
+            <th><button className={"btn btn-info"} type="submit" onClick={()=>validate(props.idclient.id)}>valider</button></th>
         </tr>
     );
 }

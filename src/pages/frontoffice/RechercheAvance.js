@@ -3,7 +3,8 @@ import {BaseUrl} from "../../BaseUrl";
 import Modal from "react-modal";
 import {customStyles} from "./fiche/Fiche";
 import {Value} from "./ListeEnchere";
-import HomeCli from "./HomeCli";
+import HomeCli, {styles} from "./HomeCli";
+import {Footer} from "../../component/MenuCli/Footer";
 
 const style={
     color:"black"
@@ -77,101 +78,113 @@ function RechercheAvance() {
     return (
         <>
             <HomeCli />
-            <main id="main" className="main-content position-sticky max-height-vh-100 h-100 border-radius-lg ">
+            <div className="fashion_section">
+                <div id="electronic_main_slider" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="container">
+                            <div className="row ">
+                                <form onSubmit={handleSubmit}  className={"form-control"} autoComplete="off">
+                                    <h1 className="text-center">Recherche avancé</h1>
+                                    <div className="row">
+                                        {/*<div className="col-md-2">*/}
 
-            <div className="container">
-                <div className="row ">
-                    <form onSubmit={handleSubmit}  className={"form-control"} autoComplete="off">
-                        <h1 className="text-center">Recherche avancé</h1>
-                            <div className="row">
-                                {/*<div className="col-md-2">*/}
-                                    <div className="form-group">
-                                        <Modal
+                                        <div className="form-group">
+                                            <Modal
 
-                                            isOpen={modalIsOpen}
-                                            onRequestClose={() => setModalIsOpen(false)}
-                                            style={customStyles}
-                                        >
-                                            <button className={"w-25 btn-close btn-danger"} style={style} onClick={() => setModalIsOpen(false)}>Close</button>
-                                            <button  type="button" style={butt} className={"w-25 btn-close"} onClick={()=>setModalIsOpen(false)} >valider</button>
-                                            <h2>choix categorie !</h2>
-                                            <form className={"form-control"}  >
-                                                {list?.map((e)=> (
-                                                    <>
-                                                        <label htmlFor="cat">{e.nom}</label><input  className={"form-check"} type="checkbox" onChange={validateCheckBox} id={"cat"} name={"cat"} value={e.id} />
-                                                    </>
-                                                ))}
-                                            </form>
-                                        </Modal>
-                                        <a type={"button"} className="btn btn-outline-info " onClick={()=>setModalIsOpen(true)}>choix categorie</a>
-                                {/*    </div>*/}
-                                </div>
-                                <div className="col-md-2">
-                                    <div className="form-group">
-                                        <label htmlFor="date_min">Date min enchere</label>
-                                        <input type="date" className="form-control" id="date_min" name="date_min"></input>
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    <div className="form-group">
-                                        <label htmlFor="date_max">Date max enchere</label>
-                                        <input type="date" className="form-control" id="date_max" name="date_max"></input>
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    <div className="form-group">
-                                        <label htmlFor="prix">Prix</label>
-                                        <input type="number" className="form-control" id="prix" name="prix"></input>
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    <div className="form-control">
-                                        <label htmlFor="stat">Status</label>
-                                        <select className="form-control" name="status" id="stat">
-                                            <option value="-1">select status</option>
-                                            <option value="0">non fini</option>
-                                            <option value="1">fini</option>
-                                        </select>
-                                        {/*<input type="number" className="form-control" id="stat" name="status"></input>*/}
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    <div className="form-group">
-                                        <label htmlFor="key">Mot clé</label>
-                                        <input type="text" className="form-control" id="key" name="keyWord"></input>
-                                    </div>
-                                </div>
+                                                isOpen={modalIsOpen}
+                                                onRequestClose={() => setModalIsOpen(false)}
+                                                style={customStyles}
+                                            >
+                                                <button className={"w-25 btn-close btn-danger"} style={style} onClick={() => setModalIsOpen(false)}>Close</button>
+                                                <button  type="button" style={butt} className={"w-25 btn-close"} onClick={()=>setModalIsOpen(false)} >valider</button>
+                                                <h2>choix categorie !</h2>
+                                                <form className={"form-control"}  >
+                                                    {list?.map((e)=> (
+                                                        <>
+                                                            <label htmlFor="cat">{e.nom}</label><input  className={"form-check"} type="checkbox" onChange={validateCheckBox} id={"cat"} name={"cat"} value={e.id} />
+                                                        </>
+                                                    ))}
+                                                </form>
+                                            </Modal>
+                                            <a type={"button"} className="btn btn-outline-info " onClick={()=>setModalIsOpen(true)}>choix categorie</a>
+                                            {/*    </div>*/}
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <label htmlFor="date_min">Date min enchere</label>
+                                                <input type="date" className="form-control" id="date_min" name="date_min"></input>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <label htmlFor="date_max">Date max enchere</label>
+                                                <input type="date" className="form-control" id="date_max" name="date_max"></input>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <label htmlFor="prix">Prix</label>
+                                                <input type="number" className="form-control" id="prix" name="prix"></input>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-control">
+                                                <label htmlFor="stat">Status</label>
+                                                <select className="form-control" name="status" id="stat">
+                                                    <option value="-1">select status</option>
+                                                    <option value="0">non fini</option>
+                                                    <option value="1">fini</option>
+                                                </select>
+                                                {/*<input type="number" className="form-control" id="stat" name="status"></input>*/}
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <label htmlFor="key">Mot clé</label>
+                                                <input type="text" className="form-control" id="key" name="keyWord"></input>
+                                            </div>
+                                        </div>
 
-                                <div className="col-md-2">
-                                    <div className="form-group">
-                                        <br/><button type="submit" id="btn" className="btn btn-success col-lg-6">Valider</button>
-                                    </div>
-                                </div>
+                                        <div className="col-md-2">
+                                            <div className="form-group">
+                                                <br/><button type="submit" id="btn" className="btn btn-success col-lg-6">Valider</button>
+                                            </div>
+                                        </div>
 
 
+                                    </div>
+                                </form>
                             </div>
-                    </form>
+                        </div>
+                        <div className="container">
+                            <h1>Liste de vos encheres </h1>
+                            <table className="table-hover table  table-responsive">
+                                <thead>
+                                <tr>
+                                    <td>Date Encheres</td>
+                                    <td>idEnchere</td>
+                                    <td>Categorie</td>
+                                    <td>Duree</td>
+                                    <td>Prix de vente </td>
+                                    <td>Prix mise en Encheres</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {response?.map((e)=>Value(e.enchere))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#electronic_main_slider" role="button" data-slide="prev">
+                        <i className="fa fa-angle-left"></i>
+                    </a>
+                    <a className="carousel-control-next" href="#electronic_main_slider" role="button" data-slide="next">
+                        <i className="fa fa-angle-right"></i>
+                    </a>
                 </div>
             </div>
-            <div className="container">
-                <h1>Liste de vos encheres </h1>
-                <table className="table-hover tab-content table-responsive">
-                    <thead>
-                    <tr>
-                        <td>Date Encheres</td>
-                        <td>idEnchere</td>
-                        <td>Categorie</td>
-                        <td>Duree</td>
-                        <td>Prix de vente </td>
-                        <td>Prix mise en Encheres</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {response?.map((e)=>Value(e.enchere))}
-                    </tbody>
-                </table>
-            </div>
-            </main>
+
+            <Footer />
         </>
     );
 }
